@@ -1,0 +1,66 @@
+/* Sets what type of font the page will use */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Gives the title "autograder with a burgundy background
+and white font text" */
+header {
+	background-color: #800020 ;
+	padding: 30px;
+	text-align: center;
+	font-size: 35px;
+	color: white;
+}
+
+/* Displays the top menu bar and formats the distance between
+ * each menu option */
+.menu {    
+	position: sticky; 
+	top: 0; 
+	background-color: #800020; 
+	padding:10px 0px 10px 0px; 
+	color:white; 
+	margin: 0 auto; 
+	overflow: hidden; 
+}
+
+/* More formating for the menu bar */
+.menu a { 
+	float: left; 
+	color: white; 
+	text-align: center; 
+	padding: 14px 16px; 
+	text-decoration: none; 
+	font-size: 20px; 
+}
+
+/* A section on the menu bar for loging in and out
+ */
+.menu-log { 
+	right: auto; 
+	float: right; 
+}
+
+/* used to have buttons appear on the website
+ */
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: initial;
+}
+
+/*this section is used to display the content of the page
+ *it's setup to display something different depending on
+ *the url */
+article {
+	-webkit-flex: 3;
+	-ms-flex: 3;
+	flex: 3;
+	background-color: #FFFFFF;
+	padding: 10px;
+}
+		

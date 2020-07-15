@@ -1,0 +1,43 @@
+{% extends "gradebook/base.html" %}
+{% load Groups %}
+
+
+{% block content %}
+
+	{% if request.user|has_group:"Instructor" %}
+	
+		<h1> List of created projects.</h1>
+		{% if project_list %}
+		<ul>
+			{% for project in project_list %}
+				<li>
+					<a href="{{project.get_absolute_url}}"> {{project.line_description}}</a> 
+				</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<p> No projects have been created.</p>
+		{% endif %}
+		
+	{% endif %}
+	
+	{% if request.user|has_group:"Student" %}
+	
+		<h1> List of assigned projects.</h1>
+		{% if project_list %}
+		<ol>
+			{% for project in project_list %}
+				{% if request.user in project.assigned_students.all %}
+					<li>
+						<a href="{{project.get_absolute_url}}"> {{project.line_description}}</a> 
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ol>
+		{% else %}
+		<p> No projects have been assigned to you.</p>
+		{% endif %}
+		
+	{% endif %}
+
+{% endblock %}

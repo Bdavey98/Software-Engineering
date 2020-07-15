@@ -1,0 +1,10 @@
+{% extends "gradebook/base.html" %}
+
+{% block content %}
+	<h2>Please enter some information about your submission.</h2>
+	<form method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submit">Submit</button>
+	</form>
+{% endblock %}

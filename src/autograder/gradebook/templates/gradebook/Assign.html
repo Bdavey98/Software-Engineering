@@ -1,0 +1,10 @@
+{% extends "gradebook/base.html" %}
+
+{% block content %}
+	<h2>Please select a group of students you would like to assign a project to.</h2>
+	<form method="POST">
+		{% csrf_token %}
+		{{form.as_p}}
+		<button type="submit">Add</button>
+	</form>
+{% endblock %}

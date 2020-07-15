@@ -1,0 +1,24 @@
+{% extends "gradebook/base.html" %}
+{% load Groups %}
+
+
+{% block content %}
+
+	<p>Project Name: {{project.line_description}}</p>
+	<p>Details: {{project.full_description}}</p>
+	
+	<h3>Assignments under this project</h3>
+	{% for assignment in project.assignment_list.all%}
+		<ul>
+			<li>
+				<a href="{{assignment.get_absolute_url}}"> {{assignment.name}}</a>
+			</li>
+		</ul>
+	{% endfor %}
+	
+	{% if request.user|has_group:"Instructor" %}
+	<h3>Students assigned to this project</h3>
+	<p>{{project.assigned_students.all|join:", " }}</p>
+	{% endif %}
+
+{% endblock %}

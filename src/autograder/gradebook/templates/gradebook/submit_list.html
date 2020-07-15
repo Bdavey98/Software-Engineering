@@ -1,0 +1,45 @@
+{% extends "gradebook/base.html" %}
+{% load Groups %}
+
+
+{% block content %}
+
+	{% if request.user|has_group:"Instructor" %}
+	
+		<h1> List of student submissions.</h1>
+		{% if submit_list %}
+		<ul>
+			{% for submit in submit_list %}
+				<li>
+					<a href="{{submit.get_absolute_url}}"> {{submit.submission_name}}</a> 
+				</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<p> No assignments have been submitted.</p>
+		{% endif %}
+		
+	{% endif %}
+	
+	{% if request.user|has_group:"Student" %}
+	
+		<h1> List of your submissions.</h1>
+		{% if submit_list %}
+		<ol>
+			{% for submit in submit_list %}
+				{% if request.user == submit.student %}
+					<li>
+						<a href="{{submit.get_absolute_url}}"> {{submit.submission_name}}</a> 
+					</li>
+				{% endif %}
+			{% endfor %}
+		</ol>
+		{% else %}
+		<p> You have not submitted anything.</p>
+		{% endif %}
+		
+		<a href="{% url 'newSubmission'%}" class="button">Submit an Assignment</a>
+		
+	{% endif %}
+
+{% endblock %}

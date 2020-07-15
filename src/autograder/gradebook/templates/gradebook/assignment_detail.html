@@ -1,0 +1,36 @@
+{% extends "gradebook/base.html" %}
+{% load Groups %}
+
+
+{% block content %}
+
+	<p>Assignment Name: {{assignment.name}}</p>
+	<p>Description: {{assignment.description}}</p>
+	
+	<h2>Viewable Tests</h2>
+	{% for test in assignment.test_set.all%}
+	
+		{% if request.user|has_group:"Student" %}
+			{% if test.view == 'Viewable to all' %}
+				<ul>
+					<li>
+						<a href="{{test.get_absolute_url}}"> {{test.name}}</a>
+					</li>
+				</ul>
+			{% endif %}
+		{% endif %}
+		
+		
+		{% if request.user|has_group:"Instructor" %}
+			<ul>
+				<li>
+					<a href="{{test.get_absolute_url}}"> {{test.name}}</a>
+				</li>
+			</ul>
+		{% endif %}
+		
+	{% endfor %}
+	
+	
+
+{% endblock %}
