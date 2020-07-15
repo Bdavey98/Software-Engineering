@@ -9,6 +9,8 @@ test: run all of the tests made
 load-data: Loads the fixture stored in the 'fixtures' directory.  
 dump-data: Stores your current database setup into the 'fixtures' directory.  
 
+Connect to the site at localhost:48000
+
 # Database Info
 The admin username is: Team4K  
 The password for every user is: TBEJ@potsdam
